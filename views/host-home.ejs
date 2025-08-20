@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registered Homes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    
+  .edit {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #4caf50, #2e7d32); /* green gradient */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+  }
+  .edit:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.5);
+  }
+  .edit:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 6px rgba(46, 125, 50, 0.4);
+  }
+
+  .delete {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #f44336, #c62828); /* red gradient */
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .delete:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(198, 40, 40, 0.5);
+  }
+  .delete:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 6px rgba(198, 40, 40, 0.4);
+  }
+
+
+    .navbar {
+      z-index: 1000;
+      position: sticky;
+      top: 0;
+      background: #e53e3e;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      transition: transform 0.001s ease, box-shadow 0.3s ease;
+      width: 600px;
+    }
+
+    .navbar a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 5px;
+    }
+
+    h1, h2 {
+      color: #e53e3e;
+    }
+
+    #sai {
+      margin-left: 140px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .card-location {
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .card-footer {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      background-color: #c62835;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .navbar a:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="/">Home</a>
+    <a href="/booking">Booking</a>
+    <a href="/workers">Workers</a>
+    <a href="/host-home">host-home</a>
+    <a href="/add-home">Login</a>
+  </div>
+
+  <p id="sai">Profile</p>
+
+  <div class="grid">
+    <% data.forEach(home => { %>
+      <div class="card">
+        <img src="<%= home.photoURL %>" alt="<%= home.houseName %>">
+        <div class="card-body">
+          <h3 class="card-title"><%= home.houseName %></h3>
+          <p class="card-location">
+            <i class="fas fa-map-marker-alt"></i> <%= home.location %>
+          </p>
+          <div class="card-footer">
+            <p class="price">PHONE no = <%= home.price %></p>
+            <span class="rating">AGE <%= home.rating %></span>
+          </div>
+          <button class="edit">edit</button>
+<button class="delete">delete</button>
+
+        </div>
+      </div>
+    <% }); %>
+  </div>
+
+</body>
+</html>
+
